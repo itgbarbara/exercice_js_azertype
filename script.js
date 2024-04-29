@@ -1,6 +1,3 @@
-const listeMots = ["Cachalot","Pétunia","Serviette"]
-const listePhrases = ["Pas de panique !","La vie, l'univers et le reste ","Merci pour le poisson"]
-
 let score = 0
 
 let choix = prompt("Avec quelle liste désirez-vous jouer : 'Mots' ou 'Phrases' ?")
@@ -24,6 +21,6 @@ if (choix === "Mots") {
             score++
         }
     }
-    console.log("Votre score est de " + score + " sur " + listePhrases.length")
+    console.log("Votre score est de " + score + " sur " + listePhrases.length)
 }
 
