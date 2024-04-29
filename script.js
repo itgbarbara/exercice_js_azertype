@@ -30,13 +30,11 @@ function lancerJeu () {
 
     if (choix === "Mots") {
         score = lancerBoucleDeJeu(listeMots)
-        nbPropositions = ListeMots.length
+        nbPropositions = listeMots.length
     } else {
-        score = lancerBoucleDeJeu(ListePhrases)
-        nbPropositions = ListePhrases.length
+        score = lancerBoucleDeJeu(listePhrases)
+        nbPropositions = listePhrases.length
     }
 
     afficherResultat (score, nbPropositions)
 }
-
-lancerJeu()
