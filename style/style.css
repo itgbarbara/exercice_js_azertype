@@ -85,7 +85,7 @@ button:focus {
     background-color: var(--color-tertiary);
     border: 3px solid var(--color-primary);
     padding: 2px;
-    
+
 }
 
 /**
@@ -222,7 +222,7 @@ footer {
 
 
 
-.active {
+.active { /* Classe ajoutée a postériori dans le HTML grâce au Javascript */
     display: flex !important;
 }
 
