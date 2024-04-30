@@ -11,7 +11,7 @@
  */
 function choisirPhrasesOuMots() {
     let choix = prompt("Avec quelle liste désirez-vous jouer : 'mots' ou 'phrases' ?")
-    while (choix != "Mots" && choix != "Phrases") {
+    while (choix != "mots" && choix != "phrases") {
         console.log("Saisie incorrecte")
         choix = prompt("Avec quelle liste désirez-vous jouer : 'mots' ou 'phrases' ?")
     }
@@ -42,7 +42,11 @@ function lancerBoucleDeJeu(listePropositions) {
  * @param {number} nbMotsProposes : le nombre de mots proposés à l'utilisateur
  */
 function afficherResultat(score, nbPropositions) {
-    console.log("Votre résultat est de " + score + " sur " + nbPropositions)
+    let affichageScore = `${score} / ${nbPropositions}`
+
+    let spanZoneScore = document.querySelector(".zoneScore span")
+
+    spanZoneScore.innerText = affichageScore
 }
 
 /**
@@ -54,12 +58,12 @@ function lancerJeu() {
     let score = 0
     let nbPropositions = 0
 
-    if (choix === "Mots") {
+    if (choix === "mots") {
         score = lancerBoucleDeJeu(listeMots)
-        nbPropositions = ListeMots.length
+        nbPropositions = listeMots.length
     } else {
-        score = lancerBoucleDeJeu(ListePhrases)
-        nbPropositions = ListePhrases.length
+        score = lancerBoucleDeJeu(listePhrases)
+        nbPropositions = listePhrases.length
     }
     afficherResultat(score, nbPropositions)
 }
