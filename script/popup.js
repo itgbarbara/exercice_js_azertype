@@ -29,7 +29,9 @@ function cacherPopup() {
 
 /**
  * Cette fonction initialise les écouteurs d'événements qui concernent 
- * l'affichage de la popup. 
+ * l'affichage de la popup.
+ * Ecouteur d'évènement = pour gérer les scripts qui ne se déroule pas dès le chargement de la page,
+ * mais lorsqu'un évènement ou une action se produisent
  */
 function initAddEventListenerPopup() {
     // On écoute le click sur le bouton "partager"
