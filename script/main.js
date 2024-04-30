@@ -4,19 +4,19 @@
  * 
  *********************************************************************************/
 
-// lancerJeu()
+lancerJeu()
 
-let inputEcriture = document.getElementById("inputEcriture")
-console.log(inputEcriture)
+// let inputEcriture = document.getElementById("inputEcriture")
+// console.log(InputEcriture)
 
-let btnValiderMot = document.getElementById("btnValiderMot")
-console.log(btnValiderMot)
+// let btnValiderMot = document.getElementById("btnValiderMot")
+// console.log(btnValiderMot)
 
-let divZoneProposition = document.querySelector(".zoneProposition")
-console.log(divZoneProposition)
+// let divZoneProposition = document.querySelector(".zoneProposition")
+// console.log(divZoneProposition)
 
-let spanScore = document.querySelector(".zoneScore span")
-console.log(spanScore)
+// let spanScore = document.querySelector(".zoneScore span")
+// console.log(spanScore)
 
-let listeBtnRadio = document.querySelectorAll(".optionSource input")
-console.log(listeBtnRadio)
+// let listeBtnRadio = document.querySelectorAll(".optionSource input")
+// console.log(listeBtnRadio)
