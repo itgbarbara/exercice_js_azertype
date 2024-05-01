@@ -49,6 +49,13 @@ function afficherResultat(score, nbPropositions) {
     spanZoneScore.innerText = affichageScore
 }
 
+// Nouvelles fonctions :
+
+function afficherProposition(proposition) {
+    let divZoneProposition = document.querySelector(".zoneProposition")
+    divZoneProposition.innerText = proposition
+}
+
 /**
  * Cette fonction lance le jeu. 
  * Elle demande à l'utilisateur de choisir entre "mots" et "phrases" et lance la boucle de jeu correspondante
@@ -56,14 +63,29 @@ function afficherResultat(score, nbPropositions) {
 function lancerJeu() {
     // let choix = choisirPhrasesOuMots()
     let score = 0
-    let nbPropositions = 0
+    let i = 0
+    
+    let btnValiderMot = document.getElementById("btnValiderMot")
+    let inputEcriture = document.getElementById("inputEcriture")
 
-    // if (choix === "mots") {
-    //     score = lancerBoucleDeJeu(listeMots)
-    //     nbPropositions = listeMots.length
-    // } else {
-    //     score = lancerBoucleDeJeu(listePhrases)
-    //     nbPropositions = listePhrases.length
-    // }
-    afficherResultat(score, nbPropositions)
+    afficherProposition(listeMots[i])
+    
+    btnValiderMot.addEventListener("click", () => {
+
+        if (inputEcriture.value === listeMots[i]) {
+            score++
+        }
+
+        i++
+        afficherResultat(score, i)
+        inputEcriture.value = ''
+
+        if (listeMots[i] === undefined) { // écrire une boucle FOR avec condition d'arrêt i < listeMots.length
+            afficherProposition("Le jeu est fini")
+            btnValiderMot.disabled = true
+        } else {
+            afficherProposition(listeMots[i])
+        }
+        afficherResultat(score, i)
+    })
 }
