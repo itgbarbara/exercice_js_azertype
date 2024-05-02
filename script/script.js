@@ -42,16 +42,15 @@
  * @param {number} nbMotsProposes : le nombre de mots proposés à l'utilisateur
  */
 function afficherResultat(score, nbPropositions) {
+    let spanScore = document.querySelector(".zoneScore span")
     let affichageScore = `${score} / ${nbPropositions}`
 
-    let spanZoneScore = document.querySelector(".zoneScore span")
-
-    spanZoneScore.innerText = affichageScore
+    spanScore.innerText = affichageScore
 }
 
 function afficherProposition(proposition) {
-    let divZoneProposition = document.querySelector(".zoneProposition")
-    divZoneProposition.innerText = proposition
+    let zoneProposition = document.querySelector(".zoneProposition")
+    zoneProposition.innerText = proposition
 }
 
 /**
@@ -59,7 +58,9 @@ function afficherProposition(proposition) {
  * Elle demande à l'utilisateur de choisir entre "mots" et "phrases" et lance la boucle de jeu correspondante
  */
 function lancerJeu() {
-    // let choix = choisirPhrasesOuMots()
+
+    initAddEventListenerPopup() // on active l'écouteur d'évènement sur la popup
+
     let score = 0
     let i = 0
     let listeProposition = listeMots
@@ -69,34 +70,36 @@ function lancerJeu() {
 
     afficherProposition(listeProposition[i])
     
+    // Gestion de l'évènement "click" sur le boutons valider
     btnValiderMot.addEventListener("click", () => {
 
-        if (inputEcriture.value === listeProposition[i]) {
-            score++
+        if (inputEcriture.value === listeProposition[i]) { // Si la saisie de l'utilisateur = proposition
+            score++ // alors on incrémente le score de 1
         }
 
-        i++
-        afficherResultat(score, i)
-        inputEcriture.value = ''
+        i++ // on incrémente i de 1
+        afficherResultat(score, i) // on affiche le résultat
+        inputEcriture.value = '' // on vide le champ de saisie
 
-        if (listeProposition[i] === undefined) { // écrire une boucle FOR avec condition d'arrêt i < listeMots.length ?
-            afficherProposition("Le jeu est fini")
-            btnValiderMot.disabled = true
+        if (listeProposition[i] === undefined) { // si le type de listeProposition est 'undefined'
+            afficherProposition("Le jeu est fini") // alors on affiche "Le jeu est fini"
+            btnValiderMot.disabled = true // et on désactive le bouton valider
         } else {
-            afficherProposition(listeProposition[i])
+            afficherProposition(listeProposition[i]) // sinon on fait une nouvelle proposition
         }
     })
 
+    // Gestion de l'évènement "change" sur les boutons radio
     let listeBtnRadio = document.querySelectorAll('input[name="optionSource"]')
     for (let index = 0; index < listeBtnRadio.length; index++) {
         listeBtnRadio[index].addEventListener("change", (event) => {
 
-            if (event.target.value === "1") {
-                listeProposition = listeMots
+            if (event.target.value === "1") { // Si c'est le premier élément qui a été sélectionné
+                listeProposition = listeMots // alors on veut jouer avec la liste de mots
             } else {
-                listeProposition = listePhrases
+                listeProposition = listePhrases // sinon nous voulons jouer avec la liste des phrases
             }
-            afficherProposition(listeProposition[i])
+            afficherProposition(listeProposition[i]) // On modifie l'affichage en direct
         })
     }
 
