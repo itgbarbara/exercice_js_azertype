@@ -64,6 +64,21 @@ function afficherEmail(nom, email, score) {
     location.href = mailto
 }
 
+function validerNom(nom) {
+    if (nom.length > 2) { // On n'a pas utilisé de regExp pour ne pas être trop restrictif
+    return true
+    }
+    return false
+}
+
+function validerEmail (email) {
+    let emailRegEx = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
+    if (emailRegEx.test(email)) {
+        return true
+    }
+    return false
+}
+
 /**
  * Cette fonction lance le jeu. 
  * Elle demande à l'utilisateur de choisir entre "mots" et "phrases" et lance la boucle de jeu correspondante
@@ -128,9 +143,12 @@ function lancerJeu() {
         console.log(nomJoueur)
         console.log(emailJoueur)
 
-        let scoreEmail = `${score} / ${i}`
-
-        afficherEmail(nomJoueur, emailJoueur, scoreEmail)
+        if (validerNom(nomJoueur) && validerEmail(emailJoueur)) {
+            let scoreEmail = `${score} / ${i}`
+            afficherEmail(nomJoueur, emailJoueur, scoreEmail)
+        } else {
+            console.log("erreur")
+        }
 
     })
 
